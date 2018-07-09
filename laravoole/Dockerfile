@@ -14,8 +14,6 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install -j$(nproc) bcmath \
     && docker-php-ext-install -j$(nproc) soap \
     && docker-php-ext-install -j$(nproc) zip \
-    && pecl install redis \
-    && docker-php-ext-enable redis \
     && pecl install mongodb \
     && docker-php-ext-enable mongodb \
     && pecl install solr \
