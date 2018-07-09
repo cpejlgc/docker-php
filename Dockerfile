@@ -19,4 +19,5 @@ RUN apt-get update && apt-get install -y \
     && pecl install solr \
     && docker-php-ext-enable solr \
     && pecl install swoole \
-    && docker-php-ext-enable swoole
+    && docker-php-ext-enable swoole \
+    && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
