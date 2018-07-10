@@ -92,6 +92,7 @@ if [[ ! -d $VOLUME_HOME/mysql ]]; then
     fi
     mysql_install_db || exit 1
     touch /var/lib/mysql/.EMPTY_DB
+    touch /var/lib/mysql/.STARTUP_SQL
     echo "=> Done!"
 else
     echo "=> Using an existing volume of MySQL"
@@ -146,10 +147,10 @@ fi
 
 # Import Startup SQL
 if [ -n "${STARTUP_SQL}" ]; then
-    if [ ! -f /var/lib/mysql/.IMPORT_DB ]; then
+    if [ -f /var/lib/mysql/.STARTUP_SQL ]; then
         echo "=> Initializing DB with ${STARTUP_SQL}"
         ImportSql
-        touch /var/lib/mysql/.IMPORT_DB
+        rm /var/lib/mysql/.STARTUP_SQL
     fi
 fi
 
