@@ -18,4 +18,6 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-enable solr \
     && pecl install swoole \
     && docker-php-ext-enable swoole \
-    && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+    && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+    && curl -sS https://getcomposer.org/installer | php \
+    && mv composer.phar /usr/local/bin/composer
